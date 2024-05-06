@@ -8,7 +8,7 @@ If it doesn't work, make a formal complaint
 
 ## The Assembly Language
 
-Mainly the `assembler.py` assembles programs written in [this specification](/instruction_set.png) but there's a couple extra bits too  
+Mainly the `assembler.py` assembles programs written in [this specification](/instruction_set.png) which I took from AQA but there's a couple extra bits too  
 1. As well as `ADD` and `SUB`, there's also shiny new `MUL` and `DIV` for multiplication and division, respectively
 2. It is recommended to write all instructions in an ASM program indented by 8 spaces (or 1 equivalent tab) to make space for labels
 3. Entry point is at the `main` label, as seen in `demo1.asm` and `demo2.asm`
