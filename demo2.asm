@@ -2,7 +2,7 @@ main:	MOV R1 #2
 	STR R1 #16
 	MOV R2 #2
 	MOV R3 #7
-loop:	LDR R1 #16
+loop:   LDR R1 #16
 	MUL R1 R1 R2
 	STR R1 #16
 	MOV R1 #0
