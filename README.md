@@ -13,3 +13,4 @@ Mainly the `assembler.py` assembles programs written in [this specification](/in
 2. It is recommended to write all instructions in an ASM program indented by 8 spaces (or 1 equivalent tab) to make space for labels
 3. Entry point is at the `main` label, as seen in `demo1.asm` and `demo2.asm`
 4. Yeah have fun (this will be worse for you than it was for me)
+5. I claim to have added support for comments and blank lines. I have not. Deal with it.
