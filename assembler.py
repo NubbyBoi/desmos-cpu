@@ -39,7 +39,7 @@ def get_labels(lines: list[str]) -> dict[str, int]:
         labels[line.split(":")[0]] = i
     return labels
 
-def get_value(string: str) -> tuple[int, int] | str:
+def get_value(string: str) -> tuple[int, int]:
     annotation, data = string[0], string[1:]
     if not data.isdigit():
         return f"Expected integer operand, got {data}"
@@ -47,8 +47,8 @@ def get_value(string: str) -> tuple[int, int] | str:
         return f"Unexpected type `{annotation}` specified for {data}. Expected `R` (register) or `#` (immediate)."
     return ("R#".index(annotation), int(data))
 
-def assemble_line(labels: dict[str, int], line: str) -> tuple[int, str] | str:
-    if line == "":
+def assemble_line(labels: dict[str, int], line: str) -> tuple[int, str]:
+    if line == "" or line.lstrip().startswith("#") or line.rstrip().endswith(":"):
         return 0, ""
     tokens: list[str] = [token for token in line.split() if ":" not in token]
     if tokens[0] not in OPERAND_FORMS.keys():
@@ -68,7 +68,7 @@ def assemble_line(labels: dict[str, int], line: str) -> tuple[int, str] | str:
         for i, token in enumerate(tokens):
             if i == 0:
                 continue
-            value: tuple[int, int] | str = get_value(token)
+            value: tuple[int, int] = get_value(token)
             if isinstance(value, str):
                 return value
             is_immediate, value = value
@@ -110,7 +110,7 @@ def main(argc: int, argv: list[str]) -> int:
             print(f"ERROR:\nNo entry point specified. Specify an entry point by including `main:` At the beginning of the first line you want to be executed.")
             return 1
         for line in lines:
-            result: tuple[str, int, str] | str = assemble_line(labels, line)
+            result: tuple[int, str] = assemble_line(labels, line)
             if isinstance(result, str):
                 print(f"ERROR [line {line}]:\n" + result)
                 return 1
