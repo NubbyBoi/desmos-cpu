@@ -3,7 +3,7 @@
 Well gosh darn, it's a CPU in the hit graphing calculator [Desmos](https://www.desmos.com/calculator)  
 I made this because I got bored, don't expect much  
 Use `assembler.py` to assemble programs to run on it  
-Here's a [link](https://www.desmos.com/calculator/ilnyyv3m0e) to the actual project  
+Here's a [link](https://www.desmos.com/calculator/zyxxaskjmy) to the actual project  
 If it doesn't work, make a formal complaint  
 
 ## The Assembly Language
