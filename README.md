@@ -3,7 +3,7 @@
 Well gosh darn, it's a CPU in the hit graphing calculator [Desmos](https://www.desmos.com/calculator)  
 I made this because I got bored, don't expect much  
 Use `assembler.py` to assemble programs to run on it  
-Here's a [link](https://www.desmos.com/calculator/zyxxaskjmy) to the actual project  
+Here's a [link](https://www.desmos.com/calculator/jbaqljhrrt) to the actual project  
 If it doesn't work, make a formal complaint  
 
 ## The Assembly Language
@@ -14,3 +14,12 @@ Mainly the `assembler.py` assembles programs written in [this specification](/in
 3. Entry point is at the `main` label, as seen in `demo1.asm` and `demo2.asm`
 4. Yeah have fun (this will be worse for you than it was for me)
 5. I claim to have added support for comments and blank lines. I have not. Deal with it.
+
+## I/O Convention
+
+- Programs should expect inputs to be at the start of RAM
+- Programs should output to the start of RAM
+- By "the start of RAM", I mean the lowest addresses in ascending order
+- For example, a program with 3 inputs should expect them at addresses 1, 2 and 3 of RAM
+- Outputs may overwrite inputs in order to properly be at the start of RAM
+- Alternatively, outputs may begin immediately after inputs
