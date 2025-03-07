@@ -31,6 +31,7 @@ IMMEDIATE_FLAG: int = 2 ** 16
 OPERAND_1: int = 2 ** 12
 OPERAND_2: int = 2 ** 8
 OPERAND_3: int = 2 ** 0
+COMMENT_CHAR = "'"
 
 def get_labels(lines: list[str]) -> dict[str, int]:
     labels: dict[str, int] = {}
@@ -52,7 +53,7 @@ def get_value(string: str) -> typing.Union[tuple[int, int], str]:
     return ("R#".index(annotation), int(data))
 
 def assemble_line(labels: dict[str, int], line: str) -> typing.Union[str, int]:
-    if line == "" or line.lstrip().startswith("#") or line.rstrip().endswith(":"):
+    if line == "" or line.lstrip().startswith(COMMENT_CHAR) or line.rstrip().endswith(":"):
         return 0
     tokens: list[str] = [token for token in line.split() if ":" not in token]
     if tokens[0] not in OPERAND_FORMS.keys():
@@ -104,7 +105,7 @@ def main(argc: int, argv: list[str]) -> int:
     machine_code: str = ""
     with open(filename) as file:
         lines: list[str] = file.read().split("\n")
-    lines = [line for line in lines if not (line.lstrip().startswith("#") or line.strip() == "")]
+    lines = [line for line in lines if not (line.lstrip().startswith(COMMENT_CHAR) or line.strip() == "")]
     labels: dict[str, int] = get_labels(lines)
     lines = [line for line in lines if ":" not in line or line.split(":")[1].strip() != ""]
     entry: int = labels.get("main")
