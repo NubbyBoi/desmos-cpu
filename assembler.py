@@ -12,7 +12,7 @@ OPERAND_FORMS: dict[str, int] = {
     "DIV": 3,
     "MOV": 2,
     "CMP": 2,
-    "B": 1,
+    "BRN": 1,
     "BEQ": 1,
     "BNE": 1,
     "BGT": 1,
@@ -23,7 +23,7 @@ OPERAND_FORMS: dict[str, int] = {
     "MVN": 1,
     "LSL": 2,
     "LSR": 2,
-    "HALT": 0,
+    "HLT": 0,
     "NOP": 0
 }
 OPERATOR: int = 2 ** 17
